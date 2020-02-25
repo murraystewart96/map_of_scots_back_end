@@ -4498,3 +4498,6 @@ SELECT * FROM SCOTS WHERE dod = '' [42122-200]
 2020-02-24 12:34:26 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLDataException: Data conversion error converting ; SQL statement:
 SELECT * FROM SCOTS WHERE date_of_death [22018-200]
+2020-02-24 14:25:17 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNT * FROM[*] SCOTS"; SQL statement:
+SELECT COUNT * FROM SCOTS [42000-200]
