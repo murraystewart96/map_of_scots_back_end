@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -43,10 +44,16 @@ public class DataLoader implements ApplicationRunner {
         List<Scot> returnedScots = scotRepository.findAllScotsOrderedByName();
         ArrayList<Scot> distinctScots = helper.removeDuplicates(returnedScots);
 
-        for(int i = 0; i < distinctScots.size(); i++){
-            System.out.println(i + ": " + distinctScots.get(i).getName());
-            //System.out.println(distinctScots.get(i).getPageID());
-       }
+        Optional john = scotRepository.findById(185L);
+
+
+
+
+
+//        for(int i = 0; i < distinctScots.size(); i++){
+//            System.out.println(i + ": " + distinctScots.get(i).getName());
+//            //System.out.println(distinctScots.get(i).getPageID());
+//       }
 
     }
 }
