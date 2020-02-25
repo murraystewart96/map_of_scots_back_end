@@ -40,20 +40,18 @@ public class DataLoader implements ApplicationRunner {
 //        }
 //    }
 
-        Helper helper = new Helper();
-        List<Scot> returnedScots = scotRepository.findAllScotsOrderedByName();
-        ArrayList<Scot> distinctScots = helper.removeDuplicates(returnedScots);
-
-        Optional john = scotRepository.findById(185L);
+       List<Long> counts = scotRepository.findOccupationCounts();
 
 
 
 
 
-//        for(int i = 0; i < distinctScots.size(); i++){
-//            System.out.println(i + ": " + distinctScots.get(i).getName());
-//            //System.out.println(distinctScots.get(i).getPageID());
-//       }
+
+
+        for(int i = 0; i < counts.size(); i++){
+            System.out.println(i + ": " + counts.get(i));
+            //System.out.println(distinctScots.get(i).getPageID());
+       }
 
     }
 }
