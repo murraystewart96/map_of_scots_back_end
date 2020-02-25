@@ -18,26 +18,31 @@ public class DataLoader implements ApplicationRunner {
     ScotRepository scotRepository;
 
     public void run(ApplicationArguments args) {
-        List<String> occupations = scotRepository.findOccupationsByCount();
+//        List<String> occupations = scotRepository.findOccupationsByCount();
+//
+//        for(int i = 0; i < occupations.size(); i++){
+//           {
+//                System.out.println(occupations.get(i));
+//
+//            }
+//        }
+//
+//
+////Get scots by occupation and remove duplicates
+//            List<Scot> scots = scotRepository.findByOccupation("physicist");
+//        Helper helper = new Helper();
+//        ArrayList<Scot> distinctScots = helper.removeDuplicates(scots);
+//
+//        for(int i = 0; i < distinctScots.size(); i++){
+//            System.out.println(i + ": " + distinctScots.get(i).getName());
+//            System.out.println(distinctScots.get(i).getPageID());
+//        }
+//    }
 
-        for(int i = 0; i < occupations.size(); i++){
-           {
-                System.out.println(occupations.get(i));
-
-            }
-        }
-
-
-//Get scots by occupation and remove duplicates
-            List<Scot> scots = scotRepository.findByOccupation("physicist");
-        Helper helper = new Helper();
-        ArrayList<Scot> distinctScots = helper.removeDuplicates(scots);
-
-        for(int i = 0; i < distinctScots.size(); i++){
-            System.out.println(i + ": " + distinctScots.get(i).getName());
-            System.out.println(distinctScots.get(i).getPageID());
-        }
+        List<Scot> scots = scotRepository.findByOccupationAndGender("physicist", "female");
+        for(int i = 0; i < scots.size(); i++){
+            System.out.println(i + ": " + scots.get(i).getName());
+       }
     }
-
 }
 

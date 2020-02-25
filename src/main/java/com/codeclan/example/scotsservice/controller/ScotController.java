@@ -1,5 +1,6 @@
 package com.codeclan.example.scotsservice.controller;
 
+import com.codeclan.example.scotsservice.helpers.Helper;
 import com.codeclan.example.scotsservice.models.Scot;
 import com.codeclan.example.scotsservice.repository.ScotRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,18 @@ public class ScotController {
 
     @GetMapping(value = "/scots/{occupation}")
     public ResponseEntity<List<Scot>> getAllScots(@PathVariable String occupation){
-        return new ResponseEntity<>(scotRepository.findByOccupation(occupation), HttpStatus.OK);
+        Helper helper = new Helper();
+        List<Scot> returnedScots = scotRepository.findByOccupation(occupation);
+        ArrayList<Scot> distinctScots = helper.removeDuplicates(returnedScots);
+        return new ResponseEntity<>(distinctScots, HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/scots/{occupation}/{gender}")
+    public ResponseEntity<List<Scot>> getScotsByOccupationAndGender(@PathVariable String occupation, @PathVariable String gender){
+        Helper helper = new Helper();
+        List<Scot> returnedScots = scotRepository.findByOccupationAndGender(occupation, gender);
+        ArrayList<Scot> distinctScots = helper.removeDuplicates(returnedScots);
+        return new ResponseEntity<>(distinctScots, HttpStatus.OK);
     }
 
 
