@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.xml.ws.Response;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class ScotController {
@@ -18,7 +19,13 @@ public class ScotController {
     @Autowired
     ScotRepository scotRepository;
 
-    @GetMapping(value = "/scots/{occupation}")
+
+    @GetMapping(value = "/scots/{id}")
+    public ResponseEntity getScot(@PathVariable Long id){
+        return new ResponseEntity(scotRepository.findById(id), HttpStatus.OK);
+    }
+
+    @GetMapping(value = "/scots/occupations/{occupation}")
     public ResponseEntity<List<Scot>> getAllScots(@PathVariable String occupation){
         Helper helper = new Helper();
         List<Scot> returnedScots = scotRepository.findByOccupation(occupation);
@@ -44,8 +51,8 @@ public class ScotController {
     public ResponseEntity<List<Scot>> getNamesOfScots(){
         Helper helper = new Helper();
         List<Scot> returnedScots = scotRepository.findAllScotsOrderedByName();
-        ArrayList<Scot> distinctScots = helper.removeDuplicates(returnedScots);
-        return new ResponseEntity<>(distinctScots, HttpStatus.OK);
+       // ArrayList<Scot> distinctScots = helper.removeDuplicates(returnedScots);
+        return new ResponseEntity<>(returnedScots, HttpStatus.OK);
     }
 
 

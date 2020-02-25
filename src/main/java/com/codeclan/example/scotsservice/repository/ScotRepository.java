@@ -5,9 +5,12 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ScotRepository extends JpaRepository<Scot, Long> {
@@ -15,6 +18,9 @@ public interface ScotRepository extends JpaRepository<Scot, Long> {
 
     @Query(value = "SELECT DISTINCT (occupation) FROM scots", nativeQuery = true)
     List<String> findAllOccupations();
+
+   // @Query(value = "SELECT * FROM scots WHERE id=:id")
+     Optional<Scot> findById(Long id);
 
     @Query(value = "SELECT COUNT(occupation) FROM scots WHERE occupation=:occupation", nativeQuery = true)
     int findOccupationCount(@Param("occupation") String occupation);
