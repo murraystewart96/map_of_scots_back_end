@@ -29,5 +29,8 @@ public interface ScotRepository extends JpaRepository<Scot, Long> {
     @Query(value = "SELECT * FROM Scots WHERE occupation=:occupation ORDER BY name", nativeQuery = true)
     List<Scot> findByOccupation(@Param("occupation") String occupation);
 
+    @Query(value = "SELECT * FROM scots ORDER BY LOWER (name)", nativeQuery = true)
+    List<Scot> findAllScotsOrderedByName();
+
 
 }

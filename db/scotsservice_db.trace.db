@@ -4498,6 +4498,15 @@ SELECT * FROM SCOTS WHERE dod = '' [42122-200]
 2020-02-24 12:34:26 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLDataException: Data conversion error converting ; SQL statement:
 SELECT * FROM SCOTS WHERE date_of_death [22018-200]
+<<<<<<< HEAD
 2020-02-24 14:25:17 jdbc[13]: exception
 org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT COUNT * FROM[*] SCOTS"; SQL statement:
 SELECT COUNT * FROM SCOTS [42000-200]
+=======
+2020-02-25 12:38:44 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM SCOTS ORDER BY NAME COLLATE[*] NOCASE"; SQL statement:
+SELECT * FROM scots ORDER BY name COLLATE NOCASE [42000-200]
+2020-02-25 12:39:42 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM SCOTS ORDER BY LOWER NAME[*]"; SQL statement:
+SELECT * FROM scots ORDER BY LOWER name [42000-200]
+>>>>>>> 9e0f22f3014844877d620026c1854290c33dfec5
