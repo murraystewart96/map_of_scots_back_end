@@ -40,6 +40,14 @@ public class ScotController {
         return new ResponseEntity<>(scotRepository.findOccupationsByCount(), HttpStatus.OK);
     }
 
+    @GetMapping(value = "/names")
+    public ResponseEntity<List<Scot>> getNamesOfScots(){
+        Helper helper = new Helper();
+        List<Scot> returnedScots = scotRepository.findAllScotsOrderedByName();
+        ArrayList<Scot> distinctScots = helper.removeDuplicates(returnedScots);
+        return new ResponseEntity<>(distinctScots, HttpStatus.OK);
+    }
+
 
 
     @PostMapping(value = "/scots")

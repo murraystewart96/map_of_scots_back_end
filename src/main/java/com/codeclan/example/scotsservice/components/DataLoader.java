@@ -39,10 +39,15 @@ public class DataLoader implements ApplicationRunner {
 //        }
 //    }
 
-        List<Scot> scots = scotRepository.findByOccupationAndGender("physicist", "female");
-        for(int i = 0; i < scots.size(); i++){
-            System.out.println(i + ": " + scots.get(i).getName());
+        Helper helper = new Helper();
+        List<Scot> returnedScots = scotRepository.findAllScotsOrderedByName();
+        ArrayList<Scot> distinctScots = helper.removeDuplicates(returnedScots);
+
+        for(int i = 0; i < distinctScots.size(); i++){
+            System.out.println(i + ": " + distinctScots.get(i).getName());
+            //System.out.println(distinctScots.get(i).getPageID());
        }
+
     }
 }
 
