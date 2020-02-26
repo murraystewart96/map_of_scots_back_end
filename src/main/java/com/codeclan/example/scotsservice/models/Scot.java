@@ -35,7 +35,7 @@ public class Scot {
     private String dateOfDeath;
 
     @Column
-    private String coord; 
+    private String coord;
 
 
     public Scot() {
@@ -51,7 +51,7 @@ public class Scot {
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.dateOfDeath = dateOfDeath;
-        this.coord = coord;
+        this.coord = coord; 
     }
 
     public Long getId() {
