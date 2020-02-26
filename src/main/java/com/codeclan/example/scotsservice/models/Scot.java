@@ -23,6 +23,9 @@ public class Scot {
     private String occupation;
 
     @Column
+    private String placeOfBirth;
+
+    @Column
     private String gender;
 
     @Column(name = "date_of_birth")
@@ -32,18 +35,19 @@ public class Scot {
     private String dateOfDeath;
 
     @Column
-    private String coord;
+    private String coord; 
 
 
     public Scot() {
     }
 
-    public Scot(Long id, String name, String pageID, String imageURL, String occupation, String gender, String dateOfBirth, String dateOfDeath, String coord) {
+    public Scot(Long id, String name, String pageID, String imageURL, String occupation, String placeOfBirth, String gender, String dateOfBirth, String dateOfDeath, String coord) {
         this.id = id;
         this.name = name;
         this.pageID = pageID;
         this.imageURL = imageURL;
         this.occupation = occupation;
+        this.placeOfBirth = placeOfBirth;
         this.gender = gender;
         this.dateOfBirth = dateOfBirth;
         this.dateOfDeath = dateOfDeath;
@@ -64,6 +68,14 @@ public class Scot {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPlaceOfBirth() {
+        return placeOfBirth;
+    }
+
+    public void setPlaceOfBirth(String placeOfBirth) {
+        this.placeOfBirth = placeOfBirth;
     }
 
     public String getPageID() {
