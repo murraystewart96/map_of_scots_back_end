@@ -23,7 +23,10 @@ public interface ScotRepository extends JpaRepository<Scot, Long> {
      Optional<Scot> findById(Long id);
 
     @Query(value = "SELECT COUNT(occupation) FROM scots WHERE occupation=:occupation", nativeQuery = true)
-    int findOccupationCount(@Param("occupation") String occupation);
+    Long findOccupationCount(@Param("occupation") String occupation);
+
+    @Query(value = "SELECT COUNT(occupation) FROM scots ORDER BY COUNT (occupation) DESC", nativeQuery = true)
+    List<Long> findOccupationCounts();
 
     @Query(value = "SELECT (occupation) FROM scots GROUP BY occupation HAVING COUNT(occupation) > 10 ORDER BY COUNT (occupation) DESC", nativeQuery = true)
     List<String> findOccupationsByCount();

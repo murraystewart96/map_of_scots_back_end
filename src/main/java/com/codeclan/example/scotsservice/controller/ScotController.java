@@ -41,6 +41,18 @@ public class ScotController {
         return new ResponseEntity<>(distinctScots, HttpStatus.OK);
     }
 
+    @GetMapping(value = "/scots/occupations/counts")
+    public ResponseEntity<List<Long>> getOccupationCounts(){
+        List<String> occupations = scotRepository.findOccupationsByCount();
+        List<Long> occupationCounts = new ArrayList<>();
+
+        for(int i = 0; i < occupations.size(); i++){
+            occupationCounts.add(scotRepository.findOccupationCount(occupations.get(i)));
+        }
+
+        return new ResponseEntity<>(occupationCounts, HttpStatus.OK);
+    }
+
 
     @GetMapping(value = "/occupations")
     public ResponseEntity<List<String>> getAllOccupations(){
@@ -49,9 +61,7 @@ public class ScotController {
 
     @GetMapping(value = "/names")
     public ResponseEntity<List<Scot>> getNamesOfScots(){
-        Helper helper = new Helper();
         List<Scot> returnedScots = scotRepository.findAllScotsOrderedByName();
-       // ArrayList<Scot> distinctScots = helper.removeDuplicates(returnedScots);
         return new ResponseEntity<>(returnedScots, HttpStatus.OK);
     }
 
